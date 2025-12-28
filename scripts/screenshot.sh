@@ -1,11 +1,11 @@
-#!/bin/bash
-#  ____                               _           _
-# / ___|  ___ _ __ ___  ___ _ __  ___| |__   ___ | |_
-# \___ \ / __| '__/ _ \/ _ \ '_ \/ __| '_ \ / _ \| __|
-#  ___) | (__| | |  __/  __/ | | \__ \ | | | (_) | |_
-# |____/ \___|_|  \___|\___|_| |_|___/_| |_|\___/ \__|
-#
+#!/usr/bin/env bash
+#                                 __        __ 
+#   ___ ___________ ___ ___  ___ / /  ___  / /_
+#  (_-</ __/ __/ -_) -_) _ \(_-</ _ \/ _ \/ __/
+# /___/\__/_/  \__/\__/_//_/___/_//_/\___/\__/ 
+#                                              
 # Based on https://github.com/hyprwm/contrib/blob/main/grimblast/screenshot.sh
+
 # -----------------------------------------------------
 
 # Screenshots will be stored in $HOME by default.
@@ -17,14 +17,13 @@
 prompt='Screenshot'
 mesg="DIR: ~/Screenshots"
 
-# Screenshot Filename
-source ~/.config/ml4w/settings/screenshot-filename.sh
-
-# Screenshot Folder
-source ~/.config/ml4w/settings/screenshot-folder.sh
+SAVE_DIR=$(cat ~/.config/ml4w/settings/screenshot-folder)
+SAVE_FILENAME=$(cat ~/.config/ml4w/settings/screenshot-filename)
+eval screenshot_folder="$SAVE_DIR"
+eval NAME="$SAVE_FILENAME"
 
 # Screenshot Editor
-export GRIMBLAST_EDITOR="$(cat ~/.config/ml4w/settings/screenshot-editor.sh)"
+export GRIMBLAST_EDITOR="$(cat ~/.config/ml4w/settings/screenshot-editor)"
 
 # Example for keybindings
 # bind = SUPER, p, exec, grimblast save active
